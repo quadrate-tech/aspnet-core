@@ -1,4 +1,4 @@
-# Vertical
+# Vertical ↑
 
 More than just another e-commerce system, Vertical aims to go further with management solutions for businesses, large or small.   
 
