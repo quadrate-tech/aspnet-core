@@ -1,6 +1,6 @@
 # Vertical ↑
 
-More than just another e-commerce system, Vertical aims to go further with organization management solutions for businesses and non-profits, large or small.   
+Vertical aims to provide management solutions for businesses and non-profit organizations, large or small. 
 
 Version 1.0 of Vertical will be designed for small businesses or organizations with one location and multiple employees that are looking to manage their contact/client relationships, record product sales and service fulfillment, manage a schedule, and track income and expenses with some light accounting features.
 
