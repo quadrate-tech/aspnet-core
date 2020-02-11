@@ -1,6 +1,6 @@
 # Vertical ↑
 
-Vertical aims to provide management solutions for businesses and non-profit organizations, large or small. 
+Vertical aims to provide management solutions for businesses and organizations, large or small. 
 
 Version 1.0 of Vertical will be designed for small businesses and organizations with multiple locations and employees that are looking to manage their contact/client relationships, invoicing, manage a schedule, fundraise, and track income and expenses with some light accounting features.
 
