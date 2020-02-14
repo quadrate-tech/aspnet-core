@@ -1,0 +1,72 @@
+﻿<div class="row mt-3">
+  <div class="col-md-6 mx-auto">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-6">
+            <span class="h3">{{ "LogIn" | localize }}</span>
+          </div>
+          <div class="col-md-6 text-right"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <form
+          novalidate
+          autocomplete="off"
+          #loginForm="ngForm"
+          (ngSubmit)="login()"
+          [busy]="submitting"
+        > 
+          <div class="form-group">
+            <label for="userNameOrEmailAddress">
+              {{ "UserNameOrEmail" | localize }}
+            </label>
+            <input
+              id="userNameOrEmailAddress"
+              class="form-control"
+              name="userNameOrEmailAddress"
+              [(ngModel)]="
+                loginService.authenticateModel.userNameOrEmailAddress
+              "
+              autocomplete="off"
+              required
+              maxlength="255"
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">{{ "Password" | localize }}</label>
+            <input
+              id="password"
+              class="form-control"
+              type="password"
+              name="password"
+              [(ngModel)]="loginService.authenticateModel.password"
+              required
+              maxlength="32"
+            />
+          </div>
+          <div class="form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="rememberMe"
+              name="rememberMe"
+              [(ngModel)]="loginService.rememberMe"
+            />
+            <label class="form-check-label" for="rememberMe">
+              {{ "RememberMe" | localize }}
+            </label>
+          </div>
+          <button
+            class="btn btn-primary mt-2"
+            type="submit"
+            flex="15"
+            [disabled]="!loginForm.form.valid || submitting"
+          >
+            {{ "LogIn" | localize }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
