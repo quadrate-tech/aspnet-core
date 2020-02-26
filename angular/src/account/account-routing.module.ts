@@ -1,15 +1,15 @@
-import { NgModule } from "@angular/core";
-import { RouterModule } from "@angular/router";
-import { LoginComponent } from "./login/login.component";
-import { AccountComponent } from "./account.component";
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { AccountComponent } from './account.component';
 
 @NgModule({
   imports: [
     RouterModule.forChild([
       {
-        path: "",
+        path: '',
         component: AccountComponent,
-        children: [{ path: "login", component: LoginComponent }]
+        children: [{ path: 'login', component: LoginComponent }]
       }
     ])
   ],

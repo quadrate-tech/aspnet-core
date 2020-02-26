@@ -1,9 +1,9 @@
-import { Component, ViewEncapsulation, Injector } from "@angular/core";
-import { AppComponentBase } from "@shared/app-component-base";
-import { slideFromBottom } from "@shared/animations/routerTransition";
+import { Component, ViewEncapsulation, Injector } from '@angular/core';
+import { AppComponentBase } from '@shared/app-component-base';
+import { slideFromBottom } from '@shared/animations/routerTransition';
 
 @Component({
-  templateUrl: "./account.component.html",
+  templateUrl: './account.component.html',
   encapsulation: ViewEncapsulation.None,
   animations: [slideFromBottom]
 })
@@ -17,8 +17,8 @@ export class AccountComponent extends AppComponentBase {
     this.currentYear = new Date().getFullYear();
     this.versionText =
       this.appSession.application.version +
-      " [" +
-      this.appSession.application.releaseDate.format("YYYYDDMM") +
-      "]";
+      ' [' +
+      this.appSession.application.releaseDate.format('YYYYDDMM') +
+      ']';
   }
 }

@@ -5,20 +5,20 @@ import {
   Input,
   SimpleChanges,
   OnChanges
-} from "@angular/core";
+} from '@angular/core';
 
 @Directive({
-  selector: "[block]"
+  selector: '[block]'
 })
 @Injectable()
 export class BlockDirective implements OnChanges {
-  @Input("block") loading: boolean;
+  @Input('block') loading: boolean;
 
   constructor(private _element: ElementRef) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    $.blockUI.defaults.overlayCSS.cursor = "not-allowed";
-    if (changes["loading"].currentValue) {
+    $.blockUI.defaults.overlayCSS.cursor = 'not-allowed';
+    if (changes['loading'].currentValue) {
       abp.ui.block(this._element.nativeElement);
     } else {
       abp.ui.unblock(this._element.nativeElement);

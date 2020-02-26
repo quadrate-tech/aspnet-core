@@ -18,6 +18,7 @@ using System.Linq;
 using System.Reflection;
 using Vertical.Configuration;
 using Vertical.Identity;
+using Vertical.Web.Swagger;
 
 namespace Vertical.Web.Startup
 {
@@ -85,6 +86,12 @@ namespace Vertical.Web.Startup
                     In = ParameterLocation.Header,
                     Type = SecuritySchemeType.ApiKey
                 });
+
+                options.ParameterFilter<SwaggerEnumParameterFilter>();
+                options.SchemaFilter<SwaggerEnumSchemaFilter>();
+                options.OperationFilter<SwaggerOperationIdFilter>();
+                options.OperationFilter<SwaggerOperationFilter>();
+                options.CustomDefaultSchemaIdSelector();
             });
 
             // Configure Abp and Dependency Injection
@@ -126,6 +133,8 @@ namespace Vertical.Web.Startup
                 options.SwaggerEndpoint(_appConfiguration["App:ServerRootAddress"].EnsureEndsWith('/') + "swagger/v1/swagger.json", "Vertical API V1");
                 options.IndexStream = () => Assembly.GetExecutingAssembly()
                     .GetManifestResourceStream("Vertical.Web.wwwroot.swagger.ui.index.html");
+
+                //options.InjectBaseUrl(_appConfiguration["App:ServerRootAddress"]);
             }); // URL: /swagger
         }
     }

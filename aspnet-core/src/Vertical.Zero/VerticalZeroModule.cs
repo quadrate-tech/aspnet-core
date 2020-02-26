@@ -1,4 +1,5 @@
-﻿using Abp.EntityFrameworkCore.Configuration;
+﻿using Abp.AspNetCore.Configuration;
+using Abp.EntityFrameworkCore.Configuration;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Abp.Zero.Configuration;
@@ -67,6 +68,8 @@ namespace Vertical
                     }
                 });
             }
+
+            Configuration.Modules.AbpAspNetCore().CreateControllersForAppServices(typeof(VerticalZeroModule).GetAssembly());
         }
 
         private void ConfigureTokenAuth()
