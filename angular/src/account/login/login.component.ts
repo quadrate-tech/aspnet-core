@@ -1,10 +1,10 @@
-import { Component, Injector } from "@angular/core";
-import { AbpSessionService } from "@abp/session/abp-session.service";
-import { AppComponentBase } from "@shared/app-component-base";
-import { LoginService } from "./login.service";
+import { Component, Injector } from '@angular/core';
+import { AbpSessionService } from '@abp/session/abp-session.service';
+import { AppComponentBase } from '@shared/app-component-base';
+import { LoginService } from './login.service';
 
 @Component({
-  templateUrl: "./login.component.html"
+  templateUrl: './login.component.html'
 })
 export class LoginComponent extends AppComponentBase {
   submitting = false;

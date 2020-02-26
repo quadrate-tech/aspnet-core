@@ -1,22 +1,21 @@
-import { TokenService } from "@abp/auth/token.service";
-import { LogService } from "@abp/log/log.service";
-import { MessageService } from "@abp/message/message.service";
-import { UtilsService } from "@abp/utils/utils.service";
-import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
-import { AppConsts } from "@shared/AppConsts";
-import { UrlHelper } from "@shared/helpers/UrlHelper";
+import { TokenService } from '@abp/auth/token.service';
+import { LogService } from '@abp/log/log.service';
+import { UtilsService } from '@abp/utils/utils.service';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppConsts } from '@shared/AppConsts';
+import { UrlHelper } from '@shared/helpers/UrlHelper';
 import {
   AuthenticateModel,
   AuthenticateResultModel,
   TokenAuthServiceProxy
-} from "@shared/service-proxies/service-proxies";
-import { finalize } from "rxjs/operators";
+} from '@shared/service-proxies/service-proxies';
+import { finalize } from 'rxjs/operators';
 
 @Injectable()
 export class LoginService {
   static readonly twoFactorRememberClientTokenName =
-    "TwoFactorRememberClientToken";
+    'TwoFactorRememberClientToken';
 
   authenticateModel: AuthenticateModel;
   authenticateResult: AuthenticateResultModel;
@@ -27,7 +26,6 @@ export class LoginService {
     private _tokenAuthService: TokenAuthServiceProxy,
     private _router: Router,
     private _utilsService: UtilsService,
-    private _messageService: MessageService,
     private _tokenService: TokenService,
     private _logService: LogService
   ) {
@@ -65,8 +63,8 @@ export class LoginService {
     } else {
       // Unexpected result!
 
-      this._logService.warn("Unexpected authenticateResult!");
-      this._router.navigate(["account/login"]);
+      this._logService.warn('Unexpected authenticateResult!');
+      this._router.navigate(['account/login']);
     }
   }
 
@@ -90,7 +88,7 @@ export class LoginService {
     );
 
     let initialUrl = UrlHelper.initialUrl;
-    if (initialUrl.indexOf("/login") > 0) {
+    if (initialUrl.indexOf('/login') > 0) {
       initialUrl = AppConsts.appBaseUrl;
     }
 

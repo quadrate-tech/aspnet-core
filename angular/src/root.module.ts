@@ -1,23 +1,23 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { NgModule, Injector, APP_INITIALIZER, LOCALE_ID } from "@angular/core";
-import { PlatformLocation, registerLocaleData } from "@angular/common";
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule, Injector, APP_INITIALIZER, LOCALE_ID } from '@angular/core';
+import { PlatformLocation, registerLocaleData } from '@angular/common';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { SharedModule } from "@shared/shared.module";
-import { ServiceProxyModule } from "@shared/service-proxies/service-proxy.module";
-import { AppConsts } from "@shared/AppConsts";
-import { AppSessionService } from "@shared/session/app-session.service";
-import { API_BASE_URL } from "@shared/service-proxies/service-proxies";
+import { SharedModule } from '@shared/shared.module';
+import { ServiceProxyModule } from '@shared/service-proxies/service-proxy.module';
+import { AppConsts } from '@shared/AppConsts';
+import { AppSessionService } from '@shared/session/app-session.service';
+import { API_BASE_URL } from '@shared/service-proxies/service-proxies';
 
-import { AbpModule } from "@abp/abp.module";
-import { AbpHttpInterceptor } from "@abp/abpHttpInterceptor";
-import { ModalModule } from "ngx-bootstrap";
-import * as _ from "lodash";
+import { AbpModule } from '@abp/abp.module';
+import { AbpHttpInterceptor } from '@abp/abpHttpInterceptor';
+import { ModalModule } from 'ngx-bootstrap';
+import * as _ from 'lodash';
 
-import { RootRoutingModule } from "./root-routing.module";
-import { RootComponent } from "./root.component";
-import { AppPreBootstrap } from "./AppPreBootstrap";
+import { RootRoutingModule } from './root-routing.module';
+import { RootComponent } from './root.component';
+import { AppPreBootstrap } from './AppPreBootstrap';
 
 export function appInitializerFactory(
   injector: Injector,
@@ -30,7 +30,7 @@ export function appInitializerFactory(
       const appBaseUrl = getDocumentOrigin() + AppConsts.appBaseHref;
 
       AppPreBootstrap.run(appBaseUrl, () => {
-        abp.event.trigger("abp.dynamicScriptsInitialized");
+        abp.event.trigger('abp.dynamicScriptsInitialized');
         const appSessionService: AppSessionService = injector.get(
           AppSessionService
         );
@@ -70,7 +70,7 @@ export function convertAbpLocaleToAngularLocale(locale: string): string {
 
   const localeMapings = _.filter(AppConsts.localeMappings, { from: locale });
   if (localeMapings && localeMapings.length) {
-    return localeMapings[0]["to"];
+    return localeMapings[0]['to'];
   }
 
   return locale;
@@ -79,7 +79,7 @@ export function convertAbpLocaleToAngularLocale(locale: string): string {
 export function shouldLoadLocale(): boolean {
   return (
     abp.localization.currentLanguage.name &&
-    abp.localization.currentLanguage.name !== "en-US"
+    abp.localization.currentLanguage.name !== 'en-US'
   );
 }
 
@@ -93,7 +93,7 @@ export function getCurrentLanguage(): string {
   }
 
   // todo: Waiting for https://github.com/angular/angular/issues/31465 to be fixed.
-  return "en";
+  return 'en';
 }
 
 @NgModule({
@@ -132,14 +132,14 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
     return baseUrl;
   }
 
-  return "/";
+  return '/';
 }
 
 function getDocumentOrigin() {
   if (!document.location.origin) {
-    const port = document.location.port ? ":" + document.location.port : "";
+    const port = document.location.port ? ':' + document.location.port : '';
     return (
-      document.location.protocol + "//" + document.location.hostname + port
+      document.location.protocol + '//' + document.location.hostname + port
     );
   }
 
