@@ -1,6 +1,5 @@
 ﻿using Abp.MultiTenancy;
 using Abp.Zero.Configuration;
-using System;
 
 namespace Vertical.Configuration
 {

@@ -1,8 +1,6 @@
 ﻿using Abp.Application.Features;
 using Abp.Domain.Repositories;
 using Abp.MultiTenancy;
-using System;
-using System.Threading.Tasks;
 using Vertical.Application.Editions;
 using Vertical.Authorization.Users;
 
@@ -21,11 +19,6 @@ namespace Vertical.MultiTenancy
                 editionManager,
                 featureValueStore)
         {
-        }
-
-        internal Task<Tenant> GetByIdAsync(int v)
-        {
-            throw new NotImplementedException();
         }
     }
 }

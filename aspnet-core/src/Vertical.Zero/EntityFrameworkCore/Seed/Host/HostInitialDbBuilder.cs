@@ -1,10 +1,10 @@
 ﻿namespace Vertical.EntityFrameworkCore.Seed.Host
 {
-    public class InitialHostDbBuilder
+    public class HostInitialDbBuilder
     {
         private readonly VerticalZeroDbContext _context;
 
-        public InitialHostDbBuilder(VerticalZeroDbContext context)
+        public HostInitialDbBuilder(VerticalZeroDbContext context)
         {
             _context = context;
         }
