@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Transactions;
 using Vertical.EntityFrameworkCore.Seed.Host;
-using Vertical.EntityFrameworkCore.Seed.Tenants;
 
 namespace Vertical.EntityFrameworkCore.Seed
 {
@@ -22,11 +21,10 @@ namespace Vertical.EntityFrameworkCore.Seed
             context.SuppressAutoSetTenantId = true;
 
             // Host seed
-            new InitialHostDbBuilder(context).Create();
+            new HostInitialDbBuilder(context).Create();
 
             // Default tenant seed (in host database).
-            new DefaultTenantBuilder(context).Create();
-            new TenantRoleAndUserBuilder(context, 1).Create();
+            new DefaultTenatInitialDbBuilder(context).Create();
         }
 
         private static void WithDbContext<TDbContext>(IIocResolver iocResolver, Action<TDbContext> contextAction)

@@ -13,12 +13,12 @@ using Vertical.Configuration;
 
 namespace Vertical.EntityFrameworkCore.Seed.Tenants
 {
-    public class TenantRoleAndUserBuilder
+    public class DefaultTenantRoleAndUserBuilder
     {
         private readonly VerticalZeroDbContext _context;
         private readonly int _tenantId;
 
-        public TenantRoleAndUserBuilder(VerticalZeroDbContext context, int tenantId)
+        public DefaultTenantRoleAndUserBuilder(VerticalZeroDbContext context, int tenantId)
         {
             _context = context;
             _tenantId = tenantId;

@@ -2,7 +2,6 @@
 using Abp.Authorization.Users;
 using Abp.MultiTenancy;
 using Abp.Runtime.Security;
-using Abp.Runtime.Session;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;

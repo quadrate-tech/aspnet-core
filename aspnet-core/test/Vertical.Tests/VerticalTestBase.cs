@@ -33,7 +33,7 @@ namespace Vertical.Tests
             UsingDbContext(context =>
             {
                 NormalizeDbContext(context);
-                new InitialHostDbBuilder(context).Create();
+                new HostInitialDbBuilder(context).Create();
                 new DefaultTenantBuilder(context).Create();
             });
 
@@ -42,7 +42,7 @@ namespace Vertical.Tests
             UsingDbContext(context =>
             {
                 NormalizeDbContext(context);
-                new TenantRoleAndUserBuilder(context, 1).Create();
+                new DefaultTenantRoleAndUserBuilder(context, 1).Create();
             });
 
             LoginAsDefaultTenantAdmin();
