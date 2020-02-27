@@ -3,6 +3,7 @@ import { AppComponentBase } from '@shared/app-component-base';
 import { SignalRAspNetCoreHelper } from '@shared/helpers/SignalRAspNetCoreHelper';
 import { slideFromBottom } from '@shared/animations/routerTransition';
 import { AppAuthService } from '@shared/auth/app-auth.service';
+import * as _ from 'lodash';
 
 @Component({
   templateUrl: './app.component.html',
@@ -10,6 +11,8 @@ import { AppAuthService } from '@shared/auth/app-auth.service';
 })
 export class AppComponent extends AppComponentBase implements OnInit {
   shownLoginName = '';
+  languages: abp.localization.ILanguageInfo[];
+  currentLanguage: abp.localization.ILanguageInfo;
 
   constructor(injector: Injector, private _authService: AppAuthService) {
     super(injector);
@@ -34,9 +37,16 @@ export class AppComponent extends AppComponentBase implements OnInit {
         }
       });
     });
+
+    this.languages = _.filter(this.localization.languages, l => !l.isDisabled);
+    this.currentLanguage = this.localization.currentLanguage;
   }
 
   logout(): void {
     this._authService.logout();
+  }
+
+  changeLanguage(languageName: string): void {
+    console.log('not_implemented_yet:');
   }
 }

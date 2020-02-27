@@ -6,6 +6,6 @@ namespace Vertical.Sessions
 {
     public interface ISessionAppService : IApplicationService
     {
-        Task<CurrentLoginInfoOutput> GetCurrentLoginInformations();
+        Task<CurrentLoginInfoOutput> GetCurrentLoginInfos();
     }
 }

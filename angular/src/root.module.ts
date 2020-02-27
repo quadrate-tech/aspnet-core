@@ -12,7 +12,6 @@ import { API_BASE_URL } from '@shared/service-proxies/service-proxies';
 
 import { AbpModule } from '@abp/abp.module';
 import { AbpHttpInterceptor } from '@abp/abpHttpInterceptor';
-import { ModalModule } from 'ngx-bootstrap';
 import * as _ from 'lodash';
 
 import { RootRoutingModule } from './root-routing.module';
@@ -101,7 +100,6 @@ export function getCurrentLanguage(): string {
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule.forRoot(),
-    ModalModule.forRoot(),
     AbpModule,
     ServiceProxyModule,
     RootRoutingModule,

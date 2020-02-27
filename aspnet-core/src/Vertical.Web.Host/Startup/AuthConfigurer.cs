@@ -12,12 +12,11 @@ namespace Vertical.Web.Startup
 {
     public static class AuthConfigurer
     {
-        public static void Configure(IServiceCollection services, IConfigurationRoot configuration)
+        public static void Configure(IServiceCollection services, IConfiguration configuration)
         {
             if (bool.Parse(configuration["Authentication:JwtBearer:IsEnabled"]))
             {
-                services.AddAuthentication(options =>
-                {
+                services.AddAuthentication(options => {
                     options.DefaultAuthenticateScheme = "JwtBearer";
                     options.DefaultChallengeScheme = "JwtBearer";
                 }).AddJwtBearer("JwtBearer", options =>

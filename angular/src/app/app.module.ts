@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientJsonpModule } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
-import { ModalModule } from 'ngx-bootstrap';
-import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AbpModule } from '@abp/abp.module';
@@ -22,12 +20,10 @@ import { UsersComponent } from './users/users.component';
     ReactiveFormsModule,
     HttpClientModule,
     HttpClientJsonpModule,
-    ModalModule.forRoot(),
     AbpModule,
     AppRoutingModule,
     ServiceProxyModule,
     SharedModule,
-    NgxPaginationModule
   ],
   providers: [],
   entryComponents: []

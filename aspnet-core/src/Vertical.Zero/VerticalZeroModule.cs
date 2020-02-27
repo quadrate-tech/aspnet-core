@@ -49,6 +49,9 @@ namespace Vertical
             // Configure roles
             AppRoleConfig.Configure(Configuration.Modules.Zero().RoleManagement);
 
+            // Use database for language management
+            Configuration.Modules.Zero().LanguageManagement.EnableDbLocalization();
+
             if (_appConfiguration["Authentication:JwtBearer:IsEnabled"] != null && bool.Parse(_appConfiguration["Authentication:JwtBearer:IsEnabled"]))
             {
                 ConfigureTokenAuth();
