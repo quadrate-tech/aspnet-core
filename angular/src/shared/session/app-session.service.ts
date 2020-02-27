@@ -51,7 +51,7 @@ export class AppSessionService {
   init(): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
       this._sessionService
-        .getCurrentLoginInformations()
+        .getCurrentLoginInfos()
         .toPromise()
         .then(
           (result: CurrentLoginInfoOutput) => {

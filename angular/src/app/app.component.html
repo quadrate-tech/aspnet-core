@@ -39,12 +39,27 @@
           Notifications
         </a>
       </li> -->
-      <!-- <li class="nav-item">
-        <a class="nav-link" href="#">
-          <i class="nav-icon fas fa-globe"></i>
-          EN
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="javascript:void(0);">
+          <i
+            class="nav-icon {{ currentLanguage.icon }}"
+            title="{{ currentLanguage.displayName }}"
+          ></i>
+          {{ currentLanguage.displayName }}
         </a>
-      </li> -->
+        <div class="dropdown-menu dropdown-menu-right p-0">
+          <li *ngFor="let language of languages">
+            <a
+              class="dropdown-item"
+              *ngIf="language.name != currentLanguage.name"
+              (click)="changeLanguage(language.name)"
+            >
+              <i class="{{ language.icon }} mr-2"></i>
+              {{ language.displayName }}</a
+            >
+          </li>
+        </div>
+      </li>
       <li class="nav-item dropdown">
         <a
           class="nav-link dropdown-toggle"

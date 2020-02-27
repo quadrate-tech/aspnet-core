@@ -3,7 +3,7 @@
     public enum TenantAvailabilityState
     {
         Available = 1,
-        InActive,
-        NotFound
+        InActive = 2,
+        NotFound = 3
     }
 }

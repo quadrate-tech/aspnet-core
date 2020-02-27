@@ -4,8 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientJsonpModule } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 
-import { ModalModule } from 'ngx-bootstrap';
-
 import { AbpModule } from '@abp/abp.module';
 
 import { AccountRoutingModule } from './account-routing.module';
@@ -26,8 +24,7 @@ import { LoginService } from './login/login.service';
     AbpModule,
     SharedModule,
     ServiceProxyModule,
-    AccountRoutingModule,
-    ModalModule.forRoot()
+    AccountRoutingModule
   ],
   declarations: [AccountComponent, LoginComponent],
   providers: [LoginService],
