@@ -1,8 +1,8 @@
-import * as moment from 'moment';
 import { AppConsts } from '@shared/AppConsts';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { Type, CompilerOptions, NgModuleRef } from '@angular/core';
+import { XmlHttpRequestHelper } from '@shared/helpers/XmlHttpRequestHelper';
 import { environment } from './environments/environment';
+import * as _ from 'lodash';
+import * as moment from 'moment';
 
 export class AppPreBootstrap {
   static run(appRootUrl: string, callback: () => void): void {
@@ -11,35 +11,28 @@ export class AppPreBootstrap {
     });
   }
 
-  static bootstrap<TM>(
-    moduleType: Type<TM>,
-    compilerOptions?: CompilerOptions | CompilerOptions[]
-  ): Promise<NgModuleRef<TM>> {
-    return platformBrowserDynamic().bootstrapModule(
-      moduleType,
-      compilerOptions
-    );
-  }
-
   private static getApplicationConfig(
     appRootUrl: string,
     callback: () => void
-  ) {
-    return abp
-      .ajax({
-        url: appRootUrl + 'assets/' + environment.appConfig,
-        method: 'GET',
-        headers: {
-          'Abp.TenantId': abp.multiTenancy.getTenantIdCookie()
+  ): void {
+    XmlHttpRequestHelper.ajax(
+      'GET',
+      appRootUrl + 'assets/' + environment.appConfig,
+      [
+        {
+          name: 'Abp.TenantId',
+          value: abp.multiTenancy.getTenantIdCookie() + ''
         }
-      })
-      .done(result => {
+      ],
+      null,
+      result => {
+        debugger;
         AppConsts.appBaseUrl = result.appBaseUrl;
         AppConsts.remoteServiceBaseUrl = result.remoteServiceBaseUrl;
         AppConsts.localeMappings = result.localeMappings;
-
         callback();
-      });
+      }
+    );
   }
 
   private static getCurrentClockProvider(
@@ -56,26 +49,24 @@ export class AppPreBootstrap {
     return abp.timing.localClockProvider;
   }
 
-  private static getUserConfiguration(
-    callback: () => void
-  ): JQueryPromise<any> {
-    return abp
-      .ajax({
-        url: AppConsts.remoteServiceBaseUrl + '/AbpUserConfiguration/GetAll',
-        method: 'GET',
-        headers: {
-          Authorization: 'Bearer ' + abp.auth.getToken(),
-          '.AspNetCore.Culture': abp.utils.getCookieValue(
-            'Abp.Localization.CultureName'
-          ),
-          'Abp.TenantId': abp.multiTenancy.getTenantIdCookie()
-        }
-      })
-      .done(result => {
-        $.extend(true, abp, result);
-
+  private static getUserConfiguration(callback: () => void): any {
+    return XmlHttpRequestHelper.ajax(
+      'GET',
+      AppConsts.remoteServiceBaseUrl + '/AbpUserConfiguration/GetAll',
+      {
+        Authorization: 'Bearer ' + abp.auth.getToken(),
+        '.AspNetCore.Culture': abp.utils.getCookieValue(
+          'Abp.Localization.CultureName'
+        ),
+        'Abp.TenantId': abp.multiTenancy.getTenantIdCookie()
+      },
+      null,
+      response => {
+        debugger;
+        _.merge(abp, response.result);
+        debugger;
         abp.clock.provider = this.getCurrentClockProvider(
-          result.clock.provider
+          response.result.clock.provider
         );
 
         moment.locale(abp.localization.currentLanguage.name);
@@ -85,6 +76,7 @@ export class AppPreBootstrap {
         }
 
         callback();
-      });
+      }
+    );
   }
 }
